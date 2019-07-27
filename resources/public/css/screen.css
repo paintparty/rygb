@@ -27,6 +27,10 @@ a, .about {
   cursor: pointer;
 }
 
+a:hover, .about:hover {
+  text-decoration: underline;
+}
+
 @keyframes color-rotate {
 
 0% {
