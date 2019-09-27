@@ -8,9 +8,9 @@ Built in Clojure(Script) with the help of [Reagent](https://github.com/reagent-p
 
 Current alpha implementations of RYGB in both JS and Clojure(Script) can be found at the following repos:
 <br>
-[rygb-js](https://paintparty.github.com/rygb-js)
+[rygb-js](https://github.com/paintparty/rygb-js)
 <br>
-[rygb-cljc](https://paintparty.github.com/rygb-cljc)
+[rygb-cljc](https://github.com/paintparty/rygb-cljc)
 
 
 ## Development Mode
