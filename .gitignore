@@ -6,3 +6,5 @@ out
 .rebel_readline_history
 figwheel_server.log
 .DS_Store
+RECOVERY.md
+scripts/check-recovered.cjs

@@ -3,6 +3,7 @@
    [re-frame.core :as rf]
    [garden.units :refer [vmin vmax percent px]]
    [rygb-demo.util :as util]
+   [rygb-demo.recovered :as recovered]
    [rygb-demo.ui-config :refer [control-vmin diagonal]]
    [rygb.core :as rygb]))
 
@@ -48,7 +49,7 @@
 (rf/reg-sub
   ::angle
   (fn [db _]
-    (-> db :rygb/string rygb/rygb->rygb-angle)))
+    (-> db :rygb/string recovered/rygb->rygb-angle)))
 
 (rf/reg-sub
   ::blaster

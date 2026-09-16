@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Monaspace Krypton';
+  src: url('../fonts/MonaspaceKryptonVar.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *:before, *:after {
   margin: 0;
   -moz-user-select: none;
@@ -468,7 +476,7 @@ a:hover, .about:hover {
 }
 
 .ux {
-  font-family: Source Code Pro;
+  font-family: Monaspace Krypton, monospace;
   font-size: 1.2rem;
   font-weight: 400;
   color: rgb(242, 242, 242);
@@ -576,7 +584,7 @@ a:hover, .about:hover {
   right: -14px;
   top: -13px;
   color: red;
-  font-family: Source Code Pro;
+  font-family: Monaspace Krypton, monospace;
 }
 
 .r {

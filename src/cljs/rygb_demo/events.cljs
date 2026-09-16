@@ -5,7 +5,7 @@
    [re-frame.core :as rf]
    [rygb-demo.db :as db :refer [default-db]]
    [rygb-demo.util :as util]
-   [rygb.hsva]
+   [rygb-demo.recovered :as recovered]
    [rygb-demo.ui-config :as ui-config
     :refer [calc-square-min calc-square-min-portrait calc-square-max calc-square-max-portrait diagonal]]
    [rygb.core :as rygb]))
@@ -52,11 +52,11 @@
    (let [m (->> default-db :rygb/string (util/gui-rygb-map default-db))
          angle (-> m
                    rygb/rygb->string
-                   rygb/rygb->rygb-angle)]
+                   recovered/rygb->rygb-angle)]
      {:rygb/map m
       :rygb/string (:rygb/string default-db)
       :rygb/input (:rygb/string default-db)
-      :rygb/ace (rygb.hsva/rygb-angle->ace-map angle)
+      :rygb/ace (recovered/rygb-angle->ace-map angle)
       :dragging-hue? false
       :dragging-sat? false
       :dragging-val? false
@@ -171,7 +171,7 @@
          :rygb/input s
          :rygb/string s
          :rygb/map m
-         :rygb/ace (rygb.hsva/rygb-angle->ace-map n)
+         :rygb/ace (recovered/rygb-angle->ace-map n)
          :blaster-angle n
          :blaster (blaster {:db db :angle n})))
 
@@ -181,7 +181,7 @@
    (cond
      (:dragging-hue? db)
      (let [n (-> e blaster-angle js/parseInt)
-           m (assoc (:rygb/map db) :h (rygb/rygb-angle->rygb-hue-map n))
+           m (assoc (:rygb/map db) :h (recovered/rygb-angle->rygb-hue-map n))
            s (rygb/rygb->string m)]
        (update-rygb! db s m n))
 
@@ -197,7 +197,7 @@
  ::rygb-input-change
  (fn [db [_ s]]
    (if-let [m (util/gui-rygb-map db s)]
-     (let [n (-> m rygb/rygb->string rygb/rygb->rygb-angle js/parseInt)]
+     (let [n (-> m rygb/rygb->string recovered/rygb->rygb-angle js/parseInt)]
        (update-rygb! db s m n))
      (assoc db :rygb/input s))))
 

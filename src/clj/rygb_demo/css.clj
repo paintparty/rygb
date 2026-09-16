@@ -2,7 +2,7 @@
   (:require
    [rygb-demo.ui-config :as ui-config :refer [control-vmin diagonal square-max square-min square-max-portrait square-min-portrait]]
    [garden.def :refer [defstyles defcssfn defkeyframes]]
-   [garden.stylesheet :refer [at-media at-keyframes]]
+   [garden.stylesheet :refer [at-font-face at-media at-keyframes]]
    [garden.core :refer [style]]
    [garden.units :refer [px percent deg vmin vmax rem s]]
    [rygb.core :as rygb :refer [rygb->hex rygb->rgba-css rygb->rgb-css]]))
@@ -42,6 +42,13 @@
  (* 0.5 (- ui-config/track-width ui-config/ball-control-diameter)))
 
 (defstyles screen
+  (at-font-face
+   {:font-family "'Monaspace Krypton'"
+    :src "url('../fonts/MonaspaceKryptonVar.woff2') format('woff2')"
+    :font-weight "200 800"
+    :font-style 'normal
+    :font-display 'swap})
+
   ["*" "*:before" "*:after"
    {:border 0
     :margin 0
@@ -330,7 +337,7 @@
     :width p100
     :height p100}]
 
-  [:.ux {:font-family "Source Code Pro"
+  [:.ux {:font-family ["Monaspace Krypton" 'monospace]
          :font-size (rem 1.2)
          :font-weight 400
          :color (rygb->rgb-css "v95")}
@@ -369,7 +376,7 @@
              :right (px -14)
              :top (px -13)
              :color 'red
-             :font-family "Source Code Pro"}]]
+             :font-family ["Monaspace Krypton" 'monospace]}]]
 
   [:&.r {:background (rygb->rgb-css "r")}]
   [:&.y {:background (rygb->rgb-css "y")}]
