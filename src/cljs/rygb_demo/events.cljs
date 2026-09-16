@@ -122,7 +122,7 @@
          m (assoc (:rygb/map db) kw v)
          s (rygb/rygb->string m)]
      (assoc db
-            :rygb/input s
+            :rygb/input (util/display-rygb-string m)
             :rygb/string s
             :rygb/map m)))
 
@@ -162,13 +162,13 @@
           m (assoc (:rygb/map db) k percent)
           s (rygb/rygb->string m)]
       (assoc db
-             :rygb/input s
+             :rygb/input (util/display-rygb-string m)
              :rygb/string s
              :rygb/map m))))
 
 (defn update-rygb! [db s m n]
   (assoc db
-         :rygb/input s
+         :rygb/input (util/display-rygb-string m)
          :rygb/string s
          :rygb/map m
          :rygb/ace (recovered/rygb-angle->ace-map n)
