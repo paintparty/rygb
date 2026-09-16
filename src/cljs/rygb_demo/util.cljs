@@ -23,7 +23,9 @@
 
 (defn display-rygb-string [{:keys [h] :as m}]
   (rygb/rygb->string
-   (cond-> m
+   (cond-> (dissoc m :a)
+     (= 1.0 (:s m)) (dissoc :s)
+     (= 1.0 (:v m)) (dissoc :v)
      h (assoc :h (clamp-hue-parts h)))))
 
 (defn px [n]
