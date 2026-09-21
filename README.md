@@ -32,7 +32,6 @@ lein garden auto
 ### Run application:
 
 ```
-lein clean
 lein figwheel dev
 ```
 
@@ -46,7 +45,6 @@ Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
 To compile clojurescript to javascript:
 
 ```
-lein clean
 lein cljsbuild once min
 ```
 
