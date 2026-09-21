@@ -82,7 +82,7 @@
 (defn menu [class]
   (let [blur (when @(rf/subscribe [::subs/info?]) "blur")]
     [:div.menu {:class [class blur]}
-     [:div.about {:on-click #(rf/dispatch [::events/show-info])} "About"]
+     [:div.about {:on-click #(rf/dispatch [::events/show-info])} "Info"]
      [:div.title "~ RYGB ~"]
      [:div.source
       [:a {:href "https://github.com/paintparty/rygb-js"
