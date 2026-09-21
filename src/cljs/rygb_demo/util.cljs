@@ -3,6 +3,31 @@
 
 (def max-hue-part 7)
 
+(defn- gcd [a b]
+  (if (zero? b)
+    a
+    (recur b (mod a b))))
+
+(def ^:private bounded-hue-part-pairs
+  (for [part-1 (range 1 (inc max-hue-part))
+        part-2 (range 1 (inc max-hue-part))
+        :when (= 1 (gcd part-1 part-2))]
+    [part-1 part-2]))
+
+(defn- mixture-fraction [[part-1 part-2]]
+  (/ part-1 (+ part-1 part-2)))
+
+(defn- closer-pair [target-fraction closest candidate]
+  (let [closest-distance (js/Math.abs
+                          (- target-fraction (mixture-fraction closest)))
+        candidate-distance (js/Math.abs
+                            (- target-fraction (mixture-fraction candidate)))]
+    (if (or (< candidate-distance closest-distance)
+            (and (= candidate-distance closest-distance)
+                 (< (apply + candidate) (apply + closest))))
+      candidate
+      closest)))
+
 (defn hue-parts-valid? [{:keys [h]}]
   (or (nil? h)
       (every? #(<= % max-hue-part) (vals h))))
@@ -11,15 +36,15 @@
   (boolean (some-> s rygb/rygb->map hue-parts-valid?)))
 
 (defn clamp-hue-parts [h]
-  (let [largest-part (apply max (vals h))]
-    (if (<= largest-part max-hue-part)
-      h
-      (reduce-kv (fn [clamped-hue color part]
-                   (assoc clamped-hue color
-                          (js/Math.ceil (* max-hue-part
-                                           (/ part largest-part)))))
-                 (empty h)
-                 h))))
+  (if (= 2 (count h))
+    (let [colors (vec (keys h))
+          parts (mapv h colors)
+          target-fraction (mixture-fraction parts)
+          closest-parts (reduce (partial closer-pair target-fraction)
+                                (first bounded-hue-part-pairs)
+                                (rest bounded-hue-part-pairs))]
+      (zipmap colors closest-parts))
+    h))
 
 (defn display-rygb-string [{:keys [h] :as m}]
   (rygb/rygb->string
