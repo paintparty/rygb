@@ -1,0 +1,213 @@
+/* Style updates / overrides */
+
+.rygb-string-input input {
+  padding: 0.35em 0.55em 0.40em;
+}
+
+.menu.portrait {
+    /* flex: 0 1 20px; */
+    /* order: 1; */
+    padding: 49px;
+    width: 100vmin;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    margin-left: calc((0px - (100vmin - 100%)) / 2);
+}
+
+.menu.landscape {
+    padding: 31px;
+    width: 286px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.controls.portrait .tempest {
+    height: 70.71067811865476vmin;
+    max-height: 50.0vmax;
+    margin: 4vmax 0;
+    order: 2;
+}
+
+@media (min-height: 700px) and (min-width: 550px) {
+  .controls.portrait .sv-controls-wrap .sv-controls .track .ball-control .label {
+      top: -33px;
+      right: -88%;
+  }
+}
+
+
+.controls.portrait .color {
+    justify-content: center;
+    order: 0;
+    flex: 0 1 18vmax;
+}
+
+
+.controls.portrait .tempest {
+    height: 70.71067811865476vmin;
+    max-height: 50.0vmax;
+    margin: 77px 0 66px;
+    order: 2;
+    @media (max-width: 550px) {
+       margin-block: 55px 46px;
+    }
+}
+
+
+/*for about:*/
+
+/*add ~ RYGB ~ header p*/
+
+.info .close-wrap {
+    @media (max-height: 900px) {
+      translate: unset;
+    }
+    position: absolute;
+    top: unset;
+    bottom: 0;
+    right: unset;
+    left: 50%;
+    translate: -50% 100%;
+    display:flex;
+    align-items: center;
+    gap: 0.85em;
+    text-transform: uppercase;
+    width: fit-content;
+    padding: 10px;
+    background: #000000b5;
+    padding-inline: 1.5em;
+    font-size: 0.7rem;
+    & .x {
+      font-size: 1.8em;
+      font-weight: 100;
+      translate: 0 -0.01em;
+    }
+    & .close-label {
+      font-weight: 600;
+      letter-spacing: 0.065em;
+    }
+    & .close {
+      width: 20px;
+      height: 20px;
+      translate: 0 -1.5px;
+      & .rg, .yb {
+        height: 1px;
+      }
+    }
+}
+
+.info .content {
+    position: relative;
+    max-width: 550px;
+    height: 100%;
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info {
+    line-height: 1.5em;
+    width: 100%;
+    right: 0;
+    top: 0;
+    justify-content: center;
+    font-family: Gentium Basic, serif;
+    height: 100%;
+    padding: 50px;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+    font-weight: 400;
+    font-size: 2.0rem;
+    display: flex;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6900000000000001);
+    color: white;
+    left: 0;
+    align-items: center;
+    .copyright {
+        display: none;
+    }
+}
+
+.menu.portrait {
+    padding: 0 31px 31px;
+    width: fit-content;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: auto;
+    .title {
+        margin: 0;
+        order: 1;
+        display:none;
+    }
+    .about {
+        order: 2;
+    }
+    .source {
+        order: 3;
+        display:none;
+    }
+}
+
+.title {
+  display:none;
+}
+
+.source {
+    display:none;
+}
+ 
+
+
+/*@ < 800px vertical about 600px hrz*/
+
+
+
+@media (max-width: 600px) and (max-height: 800px) {
+    .info .content {
+        max-width: 475px;
+    }
+
+    .info {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 600px), (max-height: 900px) {
+    .info {
+        font-size: 1.25rem;
+    }
+}
+
+
+@media (max-width: 450px), (max-height: 600px) {
+  .info .content {
+    max-width: 475px;
+  }
+  .info {
+      font-size: 0.88rem;
+      padding-inline: 24px;
+  }
+}
+
+@media (min-height: 1500px) {
+  .ux {
+    font-size: 2.0rem;
+  }
+}
+
+.ux {
+  font-family: 'Plex Mono', 'Jetbrains Mono', monospace;
+}
