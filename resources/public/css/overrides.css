@@ -33,9 +33,11 @@
     order: 2;
 }
 
-.controls.portrait .sv-controls-wrap .sv-controls .track .ball-control .label {
-    top: -33px;
-    right: -88%;
+@media (min-height: 700px) and (min-width: 550px) {
+  .controls.portrait .sv-controls-wrap .sv-controls .track .ball-control .label {
+      top: -33px;
+      right: -88%;
+  }
 }
 
 
@@ -51,6 +53,9 @@
     max-height: 50.0vmax;
     margin: 77px 0 66px;
     order: 2;
+    @media (max-width: 550px) {
+       margin-block: 55px 46px;
+    }
 }
 
 
@@ -58,21 +63,47 @@
 
 /*add ~ RYGB ~ header p*/
 
-/*put this in wrapper div by paragraphs*/
 .info .close-wrap {
-    /* position: fixed; */
-    /* top: 0; */
-    /* right: 0; */
-    translate: -53px 53px;
     @media (max-height: 900px) {
-        translate: unset;
+      translate: unset;
     }
-    
+    position: absolute;
+    top: unset;
+    bottom: 0;
+    right: unset;
+    left: 50%;
+    translate: -50% 100%;
+    display:flex;
+    align-items: center;
+    gap: 0.85em;
+    text-transform: uppercase;
+    width: fit-content;
+    padding: 10px;
+    background: #000000b5;
+    padding-inline: 1.5em;
+    font-size: 0.7rem;
+    & .x {
+      font-size: 1.8em;
+      font-weight: 100;
+      translate: 0 -0.01em;
+    }
+    & .close-label {
+      font-weight: 600;
+      letter-spacing: 0.065em;
+    }
+    & .close {
+      width: 20px;
+      height: 20px;
+      translate: 0 -1.5px;
+      & .rg, .yb {
+        height: 1px;
+      }
+    }
 }
 
 .info .content {
-    postion: relative;
-    max-width: 625px;
+    position: relative;
+    max-width: 550px;
     height: 100%;
     margin-top: -50px;
     display: flex;
@@ -115,19 +146,30 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    height: 130px;
+    height: auto;
     .title {
         margin: 0;
         order: 1;
+        display:none;
     }
     .about {
         order: 2;
     }
     .source {
         order: 3;
+        display:none;
     }
-    
 }
+
+.title {
+  display:none;
+}
+
+.source {
+    display:none;
+}
+ 
+
 
 /*@ < 800px vertical about 600px hrz*/
 
@@ -139,20 +181,24 @@
     }
 
     .info {
-        font-size: 1.66rem;
+        font-size: 1.25rem;
     }
 }
 
-@media (max-height: 900px) {
+@media (max-width: 600px), (max-height: 900px) {
     .info {
-        font-size: 1.66rem;
+        font-size: 1.25rem;
     }
 }
 
 
-@media (max-width: 450px) {
+@media (max-width: 450px), (max-height: 600px) {
+  .info .content {
+    max-width: 475px;
+  }
   .info {
-      font-size: 1rem;
+      font-size: 0.88rem;
+      padding-inline: 24px;
   }
 }
 

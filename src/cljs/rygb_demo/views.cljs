@@ -93,26 +93,30 @@
   [:div.info
    {:style {:display (when-not @(rf/subscribe [::subs/info?]) "none")}}
    [:div.content
-    [:p "RYGB color notation is a syntactical abstraction over the HSV color model. Specifically, it provides an intuitive and analogous approach to expressing hue by way of additive, proportional mixing of adjacent primary colors."]
+    [:div.close-wrap
+     {:on-click #(rf/dispatch [::events/close-info])}
+     #_[:span.x "×"] 
+     [:div.close [:div.rg] [:div.yb]] 
+     [:span.close-label "close"]]
+    [:p "RYGB color notation is a syntactical abstraction over the HSV color model. It provides an intuitive, analogous approach to expressing hue by way of additive, proportional mixing of adjacent primary colors."]
     [:p
      "The RYGB chromatic model is based on the"
-     [:a {:href "https://en.wikipedia.org/wiki/Opponent_process" :target "_blank"}
+     [:a {:href   "https://en.wikipedia.org/wiki/Opponent_process" 
+          :target "_blank"}
       " opponent process color theory"]
      ", first theorized by physiologist Ewald Hering in 1892."]
     [:p "Detailed information on RYGB usage and implementation can be found at the respective repos for "
-     [:a {:href "https://github.com/paintparty/rygb-js" :target "_blank"} "JavaScript"]
+     [:a {:href   "https://github.com/paintparty/rygb-js" 
+          :target "_blank"} "JavaScript"]
      " and "
-     [:a {:href "https://github.com/paintparty/rygb-cljc" :target "_blank"} "Clojure(Script)"]]]
-   [:div.close-wrap
-    {:on-click #(rf/dispatch [::events/close-info])}
-    [:div.close
-     [:div.rg]
-     [:div.yb]]
-    ]
+     [:a {:href   "https://github.com/paintparty/rygb-cljc" 
+          :target "_blank"} "Clojure(Script)"]]]
+   
    [:p.copyright
     "© 2019 " (.fromCharCode js/String 160)
-    [:a {:href "https://github.com/paintparty/rygb-demo" :target "_blank"}
-    [:span.amp "@"] "paintparty" ]]])
+    [:a {:href   "https://github.com/paintparty/rygb-demo" 
+         :target "_blank"}
+     [:span.amp "@"] "paintparty" ]]])
 
 (defn main-panel []
   (let [on-resize (fn [e]
